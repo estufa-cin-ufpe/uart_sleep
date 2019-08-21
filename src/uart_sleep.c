@@ -13,6 +13,8 @@
 uint8_t uartMemory[ADI_UART_BIDIR_MEMORY_SIZE];
 ADI_UART_HANDLE uartDevice;
 uint8_t* rx;
+uint8_t* fifo;
+uint8_t fp = 0;
 bool rxa = true;
 
 ADI_PWR_RESULT powerSetup()
@@ -48,6 +50,14 @@ ADI_UART_RESULT uartSetup(uint32_t baudrate, const ADI_CALLBACK cbf)
 		return result;
 	}
 	if((result = adi_uart_SetConfiguration(uartDevice, ADI_UART_NO_PARITY, ADI_UART_ONE_STOPBIT, ADI_UART_WORDLEN_8BITS)) != ADI_UART_SUCCESS)
+	{
+		return result;
+	}
+	if((result = adi_uart_EnableFifo(uartDevice, true)) != ADI_UART_SUCCESS)
+	{
+		return result;
+	}
+	if((result = adi_uart_SetRxFifoTriggerLevel(uartDevice, ADI_UART_RX_FIFO_TRIG_LEVEL_1BYTE)) != ADI_UART_SUCCESS)
 	{
 		return result;
 	}
@@ -105,6 +115,10 @@ static void callback(void* pAppHandle, uint32_t nEvent, void* pArg)
 			DEBUG_MESSAGE("%s", rx);
 			rxa = true;
 			break;
+		case ADI_UART_EVENT_NO_RX_BUFFER_EVENT:
+			fifo[fp] = rx[fp];
+			fp=(fp+1)%16;
+			break;
 		default:
 			break;
 	}
@@ -113,6 +127,7 @@ static void callback(void* pAppHandle, uint32_t nEvent, void* pArg)
 int main(int argc, char *argv[])
 {
 		rx = (uint8_t*)calloc(5, sizeof(uint8_t));
+		fifo = (uint8_t*)calloc(16, sizeof(uint8_t));
 		//setup
 		adi_initComponents();
 
@@ -120,13 +135,15 @@ int main(int argc, char *argv[])
 		ADI_PWR_RESULT pwrResult  = powerSetup();
 		if(pwrResult)
 		{
+			DEBUG_MESSAGE("%i", pwrResult);
 			return pwrResult;
 		}
 
 		//uart setup
-		ADI_UART_RESULT uartResult = uartSetup();
+		ADI_UART_RESULT uartResult = uartSetup(9600, callback);
 		if(uartResult)
 		{
+			DEBUG_MESSAGE("%i", uartResult);
 			return uartResult;
 		}
 
