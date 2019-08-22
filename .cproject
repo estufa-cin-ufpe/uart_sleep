@@ -306,4 +306,5 @@
 			<file name="RTE/Device/ADuCM3029/system_ADuCM3029.c" version="3.2.0"/>
 		</files>
 	</storageModule>
+	<storageModule moduleId="refreshScope"/>
 </cproject>

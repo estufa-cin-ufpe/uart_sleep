@@ -6,6 +6,7 @@ src/uart_sleep.o: ../src/uart_sleep.c \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/sys/adi_cio_macros.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/sys/ADuCM302x_cdef.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/sys/ADuCM302x.h \
+ ../src/uart.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/drivers/uart/adi_uart.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/adi_processor.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/ADuCM3029.h \
@@ -47,6 +48,8 @@ C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/AD
 C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/sys/ADuCM302x_cdef.h:
 
 C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/sys/ADuCM302x.h:
+
+../src/uart.h:
 
 C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/drivers/uart/adi_uart.h:
 
