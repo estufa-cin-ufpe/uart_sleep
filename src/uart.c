@@ -115,21 +115,30 @@ uint8_t* uartRead()
 	if(rx_buffer_size>0)
 	{
 		rx_buffer_size--;
+		rx_buffer = (uint8_t*)realloc(rx_buffer, (rx_buffer_size+1)*sizeof(uint8_t));
 		return rx_buffer + rx_buffer_size;
 	}
 	return NULL;
 }
 
-uint8_t* uartReadBuffer(uint8_t len)
+void uartReadBuffer(uint8_t* buf, uint8_t len)
 {
 	if(rx_buffer_size>=len)
 	{
-		uint8_t* buf = (uint8_t*)calloc(len+1, sizeof(uint8_t));
+		buf = (uint8_t*)realloc(buf, (len+1)*sizeof(uint8_t));
 		memcpy(buf, rx_buffer, len);
 		rx_buffer_size-=len;
-		return buf;
+		rx_buffer = (uint8_t*)realloc(rx_buffer, (rx_buffer_size+1)*sizeof(uint8_t));
+		return;
 	}
-	return NULL;
+	free(buf);
+	buf = NULL;
+	return;
+}
+
+uint8_t uart_available()
+{
+	return rx_buffer_size;
 }
 
 ADI_UART_RESULT uartWrite(uint8_t byte)

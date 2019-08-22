@@ -13,7 +13,6 @@
 #include <stdlib.h>
 #endif
 
-#define uart_available rx_buffer_size
 
 //uart control variables
 extern uint8_t uartMemory[ADI_UART_BIDIR_MEMORY_SIZE];
@@ -28,9 +27,11 @@ ADI_PWR_RESULT powerSetup();
 
 ADI_UART_RESULT uartSetup(uint32_t baudrate);
 
+uint8_t uart_available();
+
 uint8_t* uartRead();
 
-uint8_t* uartReadBuffer(uint8_t len);
+void uartReadBuffer(uint8_t* buf, uint8_t len);
 
 ADI_UART_RESULT uartWrite(uint8_t byte);
 
