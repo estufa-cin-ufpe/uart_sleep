@@ -8,12 +8,12 @@
 #include "common.h"
 #include <stdio.h>
 
-
 char* cmd;
+uint8_t available_buffer;
 
 int main(int argc, char *argv[])
 {
-	cmd = (char*)calloc(5, sizeof(char));
+	cmd = (char*)calloc(256, sizeof(char));
 
 	//setup
 	adi_initComponents();
@@ -37,10 +37,10 @@ int main(int argc, char *argv[])
 	do
 	{
 		adi_pwr_EnterLowPowerMode(ADI_PWR_MODE_SHUTDOWN , NULL, 0);
-		if(uart_available()==4)
+		if((available_buffer = uart_available()) > 0)
 		{
-			uartReadBuffer((uint8_t*)cmd, 4);
-			uartWriteBuffer((uint8_t*)cmd, 5);
+			uartReadBuffer((uint8_t*)cmd, available_buffer);
+			uartWriteBuffer((uint8_t*)cmd, available_buffer);
 		}
 	} while(strcmp(cmd, "exit") != 0);
 
