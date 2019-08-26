@@ -4,6 +4,7 @@
 #include <string.h>
 #include "adi_initialize.h"
 #include "uart_sleep.h"
+#include "pwr.h"
 #include "common.h"
 #include <stdio.h>
 
@@ -18,7 +19,7 @@ int main(int argc, char *argv[])
 	adi_initComponents();
 
 	//power setup
-	ADI_PWR_RESULT pwrResult  = powerSetup();
+	ADI_PWR_RESULT pwrResult  = pwrSetup();
 	if(pwrResult)
 	{
 		DEBUG_MESSAGE("%i", pwrResult);

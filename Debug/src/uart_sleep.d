@@ -32,7 +32,7 @@ src/uart_sleep.o: ../src/uart_sleep.c \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/drivers/rtc/adi_rtc.h \
  C:/Users/Rafael\ Marinho/cces/2.8.0/uart_sleep/RTE/Device/ADuCM3029/adi_rtc_config.h \
  C:/Users/Rafael\ Marinho/cces/2.8.0/uart_sleep/system/adi_initialize.h \
- ../src/uart_sleep.h \
+ ../src/uart_sleep.h ../src/pwr.h \
  C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/common.h
 
 C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/sys/platform.h:
@@ -102,5 +102,7 @@ C:/Users/Rafael\ Marinho/cces/2.8.0/uart_sleep/RTE/Device/ADuCM3029/adi_rtc_conf
 C:/Users/Rafael\ Marinho/cces/2.8.0/uart_sleep/system/adi_initialize.h:
 
 ../src/uart_sleep.h:
+
+../src/pwr.h:
 
 C:/Analog\ Devices/CrossCore\ Embedded\ Studio\ 2.8.0/ARM/packs/AnalogDevices/ADuCM302x_DFP/3.2.0/Include/common.h:

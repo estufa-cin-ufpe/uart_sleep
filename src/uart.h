@@ -5,14 +5,6 @@
 #include <drivers/uart/adi_uart.h>
 #endif
 
-#ifndef ADI_PWR_H
-#include <drivers/pwr/adi_pwr.h>
-#endif
-
-#ifndef _STDLIB_H_
-#include <stdlib.h>
-#endif
-
 #ifndef _STDLIB_H_
 #include <stdlib.h>
 #endif
@@ -27,9 +19,6 @@ extern uint8_t rx_buffer_size;
 
 void callback(void* pAppHandle, uint32_t nEvent, void* pArg);
 
-//setups power driver
-ADI_PWR_RESULT powerSetup();
-
 //setups UART driver
 //baudrate: baudrate
 ADI_UART_RESULT uartSetup(uint32_t baudrate);
@@ -40,10 +29,10 @@ uint8_t uart_available();
 //returns one byte from buffer as a pointer
 uint8_t* uartRead();
 
-//reads len bytes from buffer
-//buf: pointer where the bytes are going to be copied to (allocated inside the function).
+//reads len bytes from buffer. Returns 0 in case of success and 1 otherwise
+//buf: pointer where the bytes are going to be copied to.
 //len: number of bytes to be read
-void uartReadBuffer(uint8_t* buf, uint8_t len);
+int uartReadBuffer(uint8_t* buf, uint8_t len);
 
 //writes one byte (blocking)
 //byte: data to be written

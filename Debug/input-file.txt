@@ -7,6 +7,7 @@
 "RTE/Device/ADuCM3029/reset_ADuCM3029.o"
 "RTE/Device/ADuCM3029/startup_ADuCM3029.o"
 "RTE/Device/ADuCM3029/system_ADuCM3029.o"
+"src/pwr.o"
 "src/uart.o"
 "src/uart_sleep.o"
 "system/adi_initialize.o"

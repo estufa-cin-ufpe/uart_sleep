@@ -24,26 +24,6 @@ void callback(void* pAppHandle, uint32_t nEvent, void* pArg)
 	}
 }
 
-ADI_PWR_RESULT powerSetup()
-{
-	ADI_PWR_RESULT result;
-
-	if((result = adi_pwr_Init()) != ADI_PWR_SUCCESS)
-	{
-		return result;
-	}
-	if((result = adi_pwr_SetClockDivider(ADI_CLOCK_HCLK, 1u)) != ADI_PWR_SUCCESS)
-	{
-		return result;
-	}
-	if((result = adi_pwr_SetClockDivider(ADI_CLOCK_PCLK, 1u)) != ADI_PWR_SUCCESS)
-	{
-		return result;
-	}
-
-	return ADI_PWR_SUCCESS;
-}
-
 ADI_UART_RESULT uartSetup(uint32_t baudrate)
 {
 	ADI_UART_RESULT result;
@@ -121,19 +101,16 @@ uint8_t* uartRead()
 	return NULL;
 }
 
-void uartReadBuffer(uint8_t* buf, uint8_t len)
+int uartReadBuffer(uint8_t* buf, uint8_t len)
 {
 	if(rx_buffer_size>=len)
 	{
-		buf = (uint8_t*)realloc(buf, (len+1)*sizeof(uint8_t));
 		memcpy(buf, rx_buffer, len);
 		rx_buffer_size-=len;
 		rx_buffer = (uint8_t*)realloc(rx_buffer, (rx_buffer_size+1)*sizeof(uint8_t));
-		return;
+		return 0;
 	}
-	free(buf);
-	buf = NULL;
-	return;
+	return 1;
 }
 
 uint8_t uart_available()

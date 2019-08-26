@@ -4,14 +4,17 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/pwr.c \
 ../src/uart.c \
 ../src/uart_sleep.c 
 
 SRC_OBJS += \
+./src/pwr.o \
 ./src/uart.o \
 ./src/uart_sleep.o 
 
 C_DEPS += \
+./src/pwr.d \
 ./src/uart.d \
 ./src/uart_sleep.d 
 
