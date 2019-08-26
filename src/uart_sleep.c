@@ -6,7 +6,6 @@
 #include "uart_sleep.h"
 #include "common.h"
 #include <stdio.h>
-#include <stdlib.h>
 
 
 char* cmd;
